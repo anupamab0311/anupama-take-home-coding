@@ -7,7 +7,7 @@ const API_KEY = process.env.API_KEY;
 const fetchMovies = async (year: number, page: number = 1) => {
   try {
     const response = await axios.get(
-      https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&primary_release_year=${year}&page=${page}&sort_by=popularity.desc
+      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&primary_release_year=${year}&page=${page}&sort_by=popularity.desc`
     );
     return response.data.results;
   } catch (error) {
@@ -20,7 +20,7 @@ const fetchMovies = async (year: number, page: number = 1) => {
 const fetchMovieCredits = async (movieId: number) => {
   try {
     const response = await axios.get(
-      https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`
     );
     return response.data.crew.filter(credit => credit.known_for_department === 'Editing').map(credit => credit.name);
   } catch (error) {
